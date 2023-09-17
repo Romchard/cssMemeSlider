@@ -1,32 +1,210 @@
-:root{
-    --bg-color: #000000FF;
-    --hover-color: #FFFFFFFF;
-    --label-color: #6097FEFF;
+:root {
+    --background: #000000;
+    --hover: #ffffff;
+    --label-color: rgb(95, 151, 253);
 }
 
 /* forum-regular - latin */
 @font-face {
-    font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+    font-display: swap;
     font-family: 'Forum';
     font-style: normal;
     font-weight: 400;
-    src: url('../assets/fonts/forum-v18-latin-regular.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+    src: url('../assets/fonts/forum-v18-latin-regular.woff2') format('woff2');
 }
 
-html{
+html {
     box-sizing: border-box;
-    scroll-behavior: smooth;
+    font-size: 1rem;
 }
 
-*, ::before, ::after{
+img{
+    max-width: 100%;
+}
+
+body {
+    width: 100%;
+    height: 100vh;
+    margin: 0 auto;
+    padding: 0 2rem;
+    font-family: 'Forum', sans-serif;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: var(--hover);
+    background-color: var(--background);
+}
+
+*, ::before, ::after {
     box-sizing: inherit;
     margin: 0;
     padding: 0;
 }
 
-body{
-    font-family: 'Forum', sans-serif;
-    font-size: 14px;
-    line-height: 22px;
-    background-color: black;
+.container {
+    max-width: 1920px;
+    padding-right: 2rem;
+    padding-left: 2rem;
+}
+
+.heading {
+    text-align: center;
+    font-size: 2.5rem;
+}
+
+.slider__img {
+    text-align: center;
+    padding-bottom: 0.5rem;
+}
+
+.meme-container-content__img {
+    width: 1024px;
+    max-height: 600px;
+    object-fit: contain;
+    background-position: center center;
+    border-radius: 10px;
+}
+
+.slider__img .img1,
+.slider__img .img2,
+.slider__img .img3,
+.slider__img .img4,
+.slider__img .img5 {
+    display: none;
+}
+
+#r1:checked ~ .slider__img .img1 {
+    display: block;
+}
+
+#r2:checked ~ .slider__img .img2 {
+    display: block;
+}
+
+#r3:checked ~ .slider__img .img3 {
+    display: block;
+}
+
+#r4:checked ~ .slider__img .img4 {
+    display: block;
+}
+
+#r5:checked ~ .slider__img .img5 {
+    display: block;
+}
+
+
+.slider__column {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+
+.slider__content {
+    order: 1;
+    font-size: 2rem;
+}
+
+.slider__items {
+    order: 2;
+}
+
+.slider__content .text1,
+.slider__content .text2,
+.slider__content .text3,
+.slider__content .text4,
+.slider__content .text5 {
+    display: none;
+}
+
+#r1:checked ~ .slider__column .slider__content .text1 {
+    display: block;
+}
+
+#r2:checked ~ .slider__column .slider__content .text2 {
+    display: block;
+}
+
+#r3:checked ~ .slider__column .slider__content .text3 {
+    display: block;
+}
+
+#r4:checked ~ .slider__column .slider__content .text4 {
+    display: block;
+}
+
+#r5:checked ~ .slider__column .slider__content .text5 {
+    display: block;
+}
+
+.slider__items label {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    background-color: var(--label-color);
+    color: var(--hover);
+    border-radius: 50%;
+    margin: 0 10px;
+    cursor: pointer;
+    position: relative;
+    transition: background-color .3s linear;
+}
+
+.slider__items label:hover{
+    background-color: var(--hover);
+}
+
+
+input[type="radio"] {
+    background-color: var(--label-color);
+    display: none;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+.slider__img img,
+.slider__content div {
+    animation: slideIn 1s ease forwards;
+}
+
+@media screen and (max-width: 1024px) {
+    body{
+        padding: 0.5rem;
+    }
+
+    .heading{
+        font-size: 1.5rem;
+    }
+
+    .container{
+        padding: 0.5rem;
+    }
+
+    .slider__column{
+        flex-direction: column;
+    }
+
+    .slider__column{
+        order: 1;
+        align-items: center;
+    }
+
+    .slider__items{
+        margin-bottom: 30px;
+    }
+
+    .slider__content{
+        order: 2;
+        font-size: 1rem;
+    }
 }
